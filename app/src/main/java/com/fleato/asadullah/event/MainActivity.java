@@ -35,19 +35,9 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-        Button b=(Button)findViewById(R.id.button);
-        b.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                LoginManager m=LoginManager.getInstance();
-                m.logOut();
-                SharedPreferences.Editor editor=sh.edit();
-                editor.putString("user", null);
-                editor.commit();
-                startActivity(in);
-            }
-        });
-       
+
     }
+
 
 
     @Override
@@ -65,7 +55,16 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.logout) {
+            final SharedPreferences sh = getSharedPreferences("mydata", Context.MODE_PRIVATE);
+            final Intent in=new Intent(this,login_main.class);
+            LoginManager m=LoginManager.getInstance();
+            m.logOut();
+            SharedPreferences.Editor editor=sh.edit();
+            editor.putString("user", null);
+            editor.commit();
+            startActivity(in);
+
             return true;
         }
 
