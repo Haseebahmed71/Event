@@ -28,7 +28,7 @@ public class MainActivity extends ActionBarActivity {
 
 
         final Intent in=new Intent(this,login_main.class);
-       
+
         if(user==null ) {
             startActivity(in);
         }
@@ -43,11 +43,7 @@ public class MainActivity extends ActionBarActivity {
                 SharedPreferences.Editor editor=sh.edit();
                 editor.putString("user", null);
                 editor.commit();
-
-
-
-
-//                startActivity(in);
+                startActivity(in);
             }
         });
        
