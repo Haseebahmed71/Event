@@ -4,14 +4,14 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/imageView"
         android:src="@drawable/feed_icon" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="35dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Event"
         android:id="@+id/ename"

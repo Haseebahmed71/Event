@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">événement</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_Logout">Se Déconnecter</string>
+    <string name="myapp_id">1100632989953757</string>
+
+</resources>

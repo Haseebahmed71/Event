@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
@@ -18,10 +19,14 @@ import com.facebook.login.LoginResult;
 
 public class MainActivity extends ActionBarActivity {
 
+    ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        listView=(ListView)findViewById(R.id.listView);
+        listView.setAdapter(new feedAdapter(this));
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         final SharedPreferences sh = getSharedPreferences("mydata", Context.MODE_PRIVATE);
         String user=sh.getString("user",null);
