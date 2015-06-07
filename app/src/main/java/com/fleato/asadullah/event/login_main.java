@@ -16,16 +16,21 @@ public class login_main extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        try {
+            super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.login_view);
+            setContentView(R.layout.login_view);
 
-        FacebookFragment ff=new FacebookFragment();
-        FragmentManager fm= getSupportFragmentManager();
-        FragmentTransaction transaction=fm.beginTransaction();
-        transaction.add(R.id.facebook_container,ff,"facebookfragment");
-        transaction.commit();
+            FacebookFragment ff = new FacebookFragment();
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction transaction = fm.beginTransaction();
+            transaction.add(R.id.facebook_container, ff, "facebookfragment");
+            transaction.commit();
+        }
+        catch (Exception e){
 
+
+        }
 
 
     }
@@ -34,6 +39,7 @@ public class login_main extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }

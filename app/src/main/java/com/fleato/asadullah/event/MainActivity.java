@@ -22,23 +22,29 @@ public class MainActivity extends ActionBarActivity {
     ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        listView=(ListView)findViewById(R.id.listView);
-        listView.setAdapter(new feedAdapter(this));
+        try {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            listView = (ListView) findViewById(R.id.listView);
+            listView.setAdapter(new feedAdapter(this));
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        final SharedPreferences sh = getSharedPreferences("mydata", Context.MODE_PRIVATE);
-        String user=sh.getString("user",null);
+            FacebookSdk.sdkInitialize(getApplicationContext());
+            final SharedPreferences sh = getSharedPreferences("mydata", Context.MODE_PRIVATE);
+            String user = sh.getString("user", null);
 
 
-        final Intent in=new Intent(this,login_main.class);
+            final Intent in = new Intent(this, login_main.class);
 
-        if(user==null ) {
-            startActivity(in);
+            if (user == null) {
+                startActivity(in);
+            }
+
+
         }
+        catch(Exception e){
 
 
+        }
 
 
     }
@@ -48,7 +54,13 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        try {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+            return true;
+        }
+        catch(Exception e){
+
+        }
         return true;
     }
 
@@ -57,22 +69,29 @@ public class MainActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        try {
+            int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.logout) {
-            final SharedPreferences sh = getSharedPreferences("mydata", Context.MODE_PRIVATE);
-            final Intent in=new Intent(this,login_main.class);
-            LoginManager m=LoginManager.getInstance();
-            m.logOut();
-            SharedPreferences.Editor editor=sh.edit();
-            editor.putString("user", null);
-            editor.commit();
-            startActivity(in);
+            //noinspection SimplifiableIfStatement
+            if (id == R.id.logout) {
+                final SharedPreferences sh = getSharedPreferences("mydata", Context.MODE_PRIVATE);
+                final Intent in = new Intent(this, login_main.class);
+                LoginManager m = LoginManager.getInstance();
+                m.logOut();
+                SharedPreferences.Editor editor = sh.edit();
+                editor.putString("user", null);
+                editor.commit();
+                startActivity(in);
 
-            return true;
+                return true;
+            }
+
+            return super.onOptionsItemSelected(item);
         }
+        catch (Exception e){
+            return super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
+
+        }
     }
 }

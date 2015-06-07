@@ -54,51 +54,52 @@ public class FacebookFragment extends Fragment{
         @Override
  
         public void onSuccess(LoginResult loginResult) {
+            try {
 
-            final AccessToken accessToken=loginResult.getAccessToken();
-            Profile profile=Profile.getCurrentProfile();
-
-
-            if(profile!=null){
-
-                final User[] u = new User[1];
-                final String[][] arr = new String[1][1];
-               final Gson gson = new Gson();
-                final Context context=getActivity().getApplicationContext();
-                Log.v("verbose", "loggedin");
-                GraphRequest request = GraphRequest.newMeRequest(
-                        accessToken,
-                        new GraphRequest.GraphJSONObjectCallback() {
-                            @Override
-                            public void onCompleted(
-                                    JSONObject object,
-                                    GraphResponse response) {
+                final AccessToken accessToken = loginResult.getAccessToken();
+                Profile profile = Profile.getCurrentProfile();
 
 
-                                u[0] = gson.fromJson(object.toString(), User.class);
+                if (profile != null) {
 
-                                u[0].setAccessToken(accessToken);
-                                String json = gson.toJson(u[0]);
-                                Toast toast = Toast.makeText(context, u[0].toString(),Toast.LENGTH_LONG);
-                                toast.show();
-                                Log.v("verbose",u[0].toString());
-
-                                SharedPreferences sharedPreferences= context.getSharedPreferences("mydata",Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor=sharedPreferences.edit();
-                                editor.putString("user", json);
-                                editor.commit();
-                                getActivity().finish();
-
-                                //editor.putString("email",object)
-                                // Application code
-                            }
-                        });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields", "id,name,email");
+                    final User[] u = new User[1];
+                    final String[][] arr = new String[1][1];
+                    final Gson gson = new Gson();
+                    final Context context = getActivity().getApplicationContext();
+                    Log.v("verbose", "loggedin");
+                    GraphRequest request = GraphRequest.newMeRequest(
+                            accessToken,
+                            new GraphRequest.GraphJSONObjectCallback() {
+                                @Override
+                                public void onCompleted(
+                                        JSONObject object,
+                                        GraphResponse response) {
 
 
-                request.setParameters(parameters);
-                request.executeAsync();
+                                    u[0] = gson.fromJson(object.toString(), User.class);
+
+                                    u[0].setAccessToken(accessToken);
+                                    String json = gson.toJson(u[0]);
+                                    Toast toast = Toast.makeText(context, u[0].toString(), Toast.LENGTH_LONG);
+                                    toast.show();
+                                    Log.v("verbose", u[0].toString());
+
+                                    SharedPreferences sharedPreferences = context.getSharedPreferences("mydata", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("user", json);
+                                    editor.commit();
+                                    getActivity().finish();
+
+                                    //editor.putString("email",object)
+                                    // Application code
+                                }
+                            });
+                    Bundle parameters = new Bundle();
+                    parameters.putString("fields", "id,name,email");
+
+
+                    request.setParameters(parameters);
+                    request.executeAsync();
 
 
 
@@ -122,24 +123,9 @@ public class FacebookFragment extends Fragment{
                 */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                }
+            }
+            catch (Exception e){
 
             }
 
@@ -161,37 +147,53 @@ public class FacebookFragment extends Fragment{
 
     }
     public void onCreate(Bundle savedInstanceState){
-
-        super.onCreate(savedInstanceState);
+        try {
+            super.onCreate(savedInstanceState);
 
 //        FacebookSdk.sdkInitialize(getActivity().getApplicationContext());
 
-        mcallBackManager=CallbackManager.Factory.create();
-        //LoginManager.getInstance().logOut();// remove this line
+            mcallBackManager = CallbackManager.Factory.create();
+            //LoginManager.getInstance().logOut();// remove this line
+        }
+        catch (Exception e){
 
+
+        }
     }
 
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstaceState){
+
         return inflater.inflate(R.layout.facebook_fragment,container,false);
 
     }
     public void onViewCreated (View view,Bundle savedInstanceState){
-        super.onViewCreated(view,savedInstanceState);
-        LoginButton loginButton=(LoginButton) view.findViewById(R.id.login_button);
-        List<String> permissions = new ArrayList<String>();
-        permissions.add("email");
-        permissions.add("user_friends");
+        try {
+            super.onViewCreated(view, savedInstanceState);
+            LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
+            List<String> permissions = new ArrayList<String>();
+            permissions.add("email");
+            permissions.add("user_friends");
 
-        loginButton.setReadPermissions(permissions);
-        loginButton.setFragment(this);
-        loginButton.registerCallback(mcallBackManager,mCallBack);
+            loginButton.setReadPermissions(permissions);
+            loginButton.setFragment(this);
+            loginButton.registerCallback(mcallBackManager, mCallBack);
+        }
+        catch (Exception e){
 
+
+        }
     }
     public  void onActivityResult(int requestCode,int resultCode,Intent data){
+        try {
 
 
-        super.onActivityResult(requestCode,resultCode,data);
-        mcallBackManager.onActivityResult(requestCode,resultCode,data);
+            super.onActivityResult(requestCode, resultCode, data);
+            mcallBackManager.onActivityResult(requestCode, resultCode, data);
+        }
+        catch (Exception e){
+
+
+        }
     }
 
 
