@@ -24,13 +24,10 @@ public class feedAdapter extends BaseAdapter {
     public feedAdapter(Context c){
         mycontext=c;
         arrayList=new ArrayList<Node>();
-        Node n=null;
-        for(int i=0;i<20;i++) {
-            n = new Node();
-            n.name = "Asad";
-            n.description = "some description about the event";
-            arrayList.add(n);
-        }
+
+        DatabaseHelper db = new DatabaseHelper(this.mycontext);
+        arrayList=db.getEvents();
+
 
 
 
@@ -55,13 +52,18 @@ public class feedAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         LayoutInflater layoutInflater=(LayoutInflater)mycontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row=layoutInflater.inflate(R.layout.node,parent,false);
         TextView name=(TextView)row.findViewById(R.id.ename);
         TextView description=(TextView)row.findViewById(R.id.description);
+        TextView id=(TextView)row.findViewById(R.id.myid);
         Node n=arrayList.get(position);
+        String myid=""+n.id;
         name.setText(n.name);
         description.setText(n.description);
+        id.setText(myid);
+
 
         return row;
     }

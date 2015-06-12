@@ -5,5 +5,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_Logout">Cerrar Sesión</string>
     <string name="myapp_id">1100632989953757</string>
+    <string name="newevent">nuevo evento</string>
+
+    <string name="register_here">Registrarse aquí</string>
+    <string name="name">Nombre:</string>
+    <string name="description">Descripción:</string>
+    <string name="register">paso siguiente</string>
 
 </resources>

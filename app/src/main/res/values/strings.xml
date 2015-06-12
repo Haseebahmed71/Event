@@ -5,5 +5,18 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_Logout">Logout</string>
     <string name="myapp_id">1100632989953757</string>
+    <string name="newevent">new event</string>
+    <string name="title_activity_new_event">NewEvent</string>
+    <string name="action_settings">Settings</string>
+    <string name="register_here">Register Here</string>
+    <string name="name">Name:</string>
+    <string name="description">Description:</string>
+    <string name="register">Next step</string>
+    <string name="title_activity_get_date_time">GetDateTimeActivity</string>
+    <string name="title_activity_date">DateActivity</string>
+    <string name="title_activity_get_location_maps">Map</string>
+    <string name="in">content://sms/inbox</string>
+    <string name="title_activity_event_activity">Event_activity</string>
+    <string name="title_activity_event_">Event_Activity</string>
 
 </resources>

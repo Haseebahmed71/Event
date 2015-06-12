@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 
 
@@ -44,6 +45,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import com.google.gson.*;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +90,8 @@ public class FacebookFragment extends Fragment{
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putString("user", json);
                                     editor.commit();
+
+
                                     getActivity().finish();
 
                                     //editor.putString("email",object)
